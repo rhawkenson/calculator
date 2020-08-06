@@ -209,17 +209,19 @@ function clearAll(){
     num1 = 0;
     num2 = 0;
     cleared = true;
+    equalsClicked = false;
+    operationOn = false;
 }
 
 equalsButton.onclick = function(){
     if(equalsClicked){
         cleared = true;
         equalsClicked = false;
-    }else {
+    } else {
         num2 = parseFloat(display.innerHTML);
         operate();
         equalsClicked = true;
-    }
+    } clearAll();
     
 }
 
