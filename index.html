@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href ="style.css" rel="stylesheet" type="text/css">
+
     <title>Calculator</title>
 </head>
 <body>
@@ -10,47 +12,62 @@
         <h1>Calculator</h1>
     </div>
     
-    <div id="input">
-        <p></p>
+    <div id="entry-window">
+       <p id='input'> 2 + 2</p>
     </div>
 
     <div id='buttons-body'>
         <div id='row1' class='button-row'>
-            <p>C</p>
-            <p>%</p>
-            <p>+/-</p>
-            <p>/</p>
+            <p id='clear' class='button' >C</p>
+            <p class='button operator'>%</p>
+            <p class='button operator'>+/-</p>
+            <p class='button operator'>/</p>
         </div>
 
         <div id='row2' class='button-row'>
-            <p>x</p>
-            <p>9</p>
-            <p>8</p>
-            <p>7</p>
+            <p class='button operator'>x</p>
+            <p class='button number'>9</p>
+            <p class='button number'>8</p>
+            <p class='button number'>7</p>
         </div>
         
         <div id='row3' class='button-row'>
-            <p>-</p>
-            <p>6</p>
-            <p>5</p>
-            <p>4</p>
+            <p class='button operator'>-</p>
+            <p class='button number'>6</p>
+            <p class='button number'>5</p>
+            <p class='button number'>4</p>
         </div>
         
         <div id='row4' class='button-row'>
-            <p>+</p>
-            <p>3</p>
-            <p>2</p>
-            <p>1</p>
+            <p class='button operator'>+</p>
+            <p class='button number'>3</p>
+            <p class='button number'>2</p>
+            <p class='button number'>1</p>
         </div>
         <div id='row5'  class='button-row'>
-            <p>=</p>
-            <p>0</p>
-            <p>00</p>
-            <p>.</p>
+            <p class='button operator'>=</p>
+            <p class='button operator'>.</p>
+            <p class='button number'>00</p>
+            <p class='button number'>0</p>
 
         </div>
         
     </div>
+
+    <footer>
+        <div id="contact">
+            <div id='name' >
+               <p class='contact-item'><b>Rebecca Hawkenson</b> </p>
+            </div>
+            
+            <div id='references'>
+                <p class='contact-item'>Created with <a href='https://www.theodinproject.com/'>The Odin Project</a></p>
+                <p class='contact-item'><a href='https://www.linkedin.com/in/rebecca-hawkenson/'><img src="linkedin.png"></a></p>
+                <p class='contact-item'><a href='https://github.com/rhawkenson'><img src="github.png"></a></p>
+            </div>
+            
+        </div>
+    </footer>
     
 </body>
 <script src='script.js'>

@@ -1,0 +1,119 @@
+*{
+    font-family: 'Courier New', Courier, monospace;
+    color: rgba(231, 220, 220, 0.863);
+}
+
+body{
+    background-image: url('chalkboard-1620558.jpg');
+}
+
+#heading {
+    text-align: center;
+    display: block;
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+
+#entry-window{
+    display: block;
+    width: 300px;
+    border-radius: 5px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    padding-right: 10px;
+    font-weight: 700;
+    font-size: 20px;
+    background-color: rgb(83, 81, 81);
+    border: 3px solid black;
+    color: white;
+    text-align: right;
+}
+
+.button-row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row-reverse;
+}
+
+
+.button{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding-right:5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 7px;
+    text-align: center;
+    margin: 5px;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+#clear{
+    background-color: black;
+    color: rgb(219, 81, 81);
+    align-items: center;
+    justify-content: center;
+    padding-right: 0px;
+    padding-left: 5px;
+}
+#clear:hover{
+    background-color:rgb(49, 48, 48);
+}
+
+
+
+.operator{
+    background-color: rgb(219, 81, 81);
+    color: black;
+    align-items: center;
+    justify-content: center;
+    padding-right: 0px;
+    padding-left: 5px;
+}
+.operator:hover{
+    background-color: rgb(250, 117, 117);
+}
+
+
+.number{
+    background-color: rgb(226, 147, 147);
+    color: black;
+}
+.number:hover{
+    background-color: rgb(255, 197, 197);
+}
+
+footer{
+    display: fixed;
+    background: rgba(128, 128, 128, 0.4);
+    text-align: center;
+    font-size: 15px;
+    width: 100%;
+    margin-top: 85px;
+}
+
+
+#contact{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+
+#references{
+    display: flex;
+    align-items: flex-end;
+}
+
+.contact-item{
+    padding: 10px;
+}
+
+img{
+    width: 28px;
+    height: 25px;
+}
