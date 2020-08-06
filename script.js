@@ -25,6 +25,7 @@ let percentSelected = false;
 let decimalSelected = false;
 let cleared = false;
 let operationOn = false;
+let equalsClicked = false;
 
 let operation;
 let num1 = 0;
@@ -211,8 +212,15 @@ function clearAll(){
 }
 
 equalsButton.onclick = function(){
-    num2 = parseFloat(display.innerHTML);
-    operate();
+    if(equalsClicked){
+        cleared = true;
+        equalsClicked = false;
+    }else {
+        num2 = parseFloat(display.innerHTML);
+        operate();
+        equalsClicked = true;
+    }
+    
 }
 
 
@@ -257,3 +265,83 @@ function operate(){
        return divide();
     }
 };
+
+
+/* Use keyboard to activate buttons */
+function keyboardControl(){
+    document.addEventListener('keydown', function(e){
+        switch(true){
+            case(e.keyCode === 48):
+            zero.onclick();
+            break;
+
+            case(e.keyCode === 49):
+            one.onclick();
+            break;
+
+            case(e.keyCode === 50):
+            two.onclick();
+            break;
+
+            case(e.keyCode === 51):
+            three.onclick();
+            break;
+
+            case(e.keyCode === 52):
+            four.onclick();
+            break;
+
+            case(e.keyCode === 53):
+            five.onclick();
+            break;
+
+            case(e.keyCode === 54):
+            six.onclick();
+            break;
+
+            case(e.keyCode === 55):
+            seven.onclick();
+            break;
+
+            case(e.keyCode === 56):
+            eight.onclick();
+            break;
+
+            case(e.keyCode === 57):
+            nine.onclick();
+            break;
+
+            case(e.keyCode === 13):
+            equalsButton.onclick();
+            break;
+
+            case(e.keyCode === 88):
+            multiplyButton.onclick();
+            break;
+
+            case(e.keyCode === 187):
+            addButton.onclick();
+            break;
+
+            case(e.keyCode === 190):
+            decimalButton.onclick();
+            break;
+
+            case(e.keyCode === 191):
+            divideButton.onclick();
+            break;
+
+            case(e.keyCode === 189):
+            subtractButton.onclick();
+            break;
+
+            case(e.keyCode === 67):
+            clearButton.onclick();
+            break;
+        }
+
+        
+    })
+}
+
+window.onload=keyboardControl();
