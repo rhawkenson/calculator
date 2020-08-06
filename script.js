@@ -20,50 +20,95 @@ let nine = document.getElementById('9');
 let zero = document.getElementById('0');
 let doubleZero = document.getElementById('00');
 let decimalButton = document.getElementById('decimal')
-let percentSelected = true;
+
+let percentSelected = false;
 let decimalSelected = false;
-let divideSelected = false;
-let multiplySelected = false;
-let subtractSelected = false;
-let addSelected = false;
+let cleared = false;
+let operationOn = false;
+
 let operation;
 let num1 = 0;
 let num2 = 0;
 
 /* Button onclick events */
 one.onclick = function(){
-    display.innerHTML += '1';
+    if (cleared){
+        display.innerHTML = '1';
+    } else{
+        display.innerHTML += '1';
+    } cleared = false;
+    
 }
 two.onclick = function(){
-    display.innerHTML += '2';
+    if (cleared){
+        display.innerHTML = '2'; 
+    } else{
+        display.innerHTML += '2';
+    } cleared = false;
 }
 three.onclick = function(){
-    display.innerHTML += '3';
-}
+    if (cleared){
+        display.innerHTML = '3'; 
+    } else{
+        display.innerHTML += '3';
+    } cleared = false;
+}    
 four.onclick = function(){
-    display.innerHTML += '4';
+    if (cleared){
+        display.innerHTML = '4'; 
+    } else{
+        display.innerHTML += '4';
+    } cleared = false;
 }
 five.onclick = function(){
-    display.innerHTML += '5';
+    if (cleared){
+        display.innerHTML = '5'; 
+    } else{
+        display.innerHTML += '5';
+    } cleared = false;
 }
 six.onclick = function(){
-    display.innerHTML += '6';
+    if (cleared){
+        display.innerHTML = '6'; 
+    } else{
+        display.innerHTML += '6';
+    } cleared = false;
 }
 seven.onclick = function(){
-    display.innerHTML += '7';
+    if (cleared){
+        display.innerHTML = '7'; 
+    } else{
+        display.innerHTML += '7';
+    } cleared = false;
 }
 eight.onclick = function(){
-    display.innerHTML += '8';
+    if (cleared){
+        display.innerHTML = '8'; 
+    } else{
+        display.innerHTML += '8';
+    } cleared = false;
 }
 nine.onclick = function(){
-    display.innerHTML += '9';
+    if (cleared){
+        display.innerHTML = '9'; 
+    } else{
+        display.innerHTML += '9';
+    } cleared = false;
 }
 zero.onclick = function(){
-    display.innerHTML += '0';
+    if (cleared){
+        display.innerHTML = '0'; 
+    } else{
+        display.innerHTML += '0';
+    } cleared = false;
 }
 
 doubleZero.onclick = function(){
-    display.innerHTML += '00';
+    if (cleared){
+        display.innerHTML = '00'; 
+    } else{
+        display.innerHTML += '00';
+    } cleared = false;
 }
 
 decimal.onclick = function(){
@@ -72,7 +117,7 @@ decimal.onclick = function(){
         decimalSelected = true;
     } else {
         decimalSelected = true;
-    }
+    } cleared = false;
 }
 
 signButton.onclick = function(){
@@ -80,49 +125,89 @@ signButton.onclick = function(){
 }
 
 percent.onclick = function(){
-        if (!percentSelected){
+    if (!percentSelected){
         display.innerHTML *= 100;
         percentSelected = true;
     } else {
         display.innerHTML /= 100;
         percentSelected = false;
-    }
+    } 
 };
 
+/* Four function calculator - functions */
 divideButton.onclick = function(){
-    if (!divideSelected){
+        if (!operationOn){
+            operation = 'divide';
+            num1 = parseFloat(display.innerHTML);
+            display.innerHTML = '';
+            cleared = true;
+            operationOn = true;
+        } else {
+            num2 = parseFloat(display.innerHTML);
+            operate();
+            operation = 'divide';
+    } 
+}
+
+multiplyButton.onclick = function(){
+    if (!operationOn){
+        operation = 'multiply';
         num1 = parseFloat(display.innerHTML);
         display.innerHTML = '';
-        operation = 'divide'; 
-        divideSelected = true;
+        cleared = true;
+        operationOn = true;
     } else {
-        num1 = parseFloat(display.innerHTML);
-        operate(); 
+        num2 = parseFloat(display.innerHTML);
+        operate();
+        operation = 'multiply';
     }
-    
 }
-multiplyButton.onclick = function(){
-    num1 = parseFloat(display.innerHTML);
-    display.innerHTML = '';
-    operation = 'multiply';
-}
+
 subtractButton.onclick = function(){
-    num1 = parseFloat(display.innerHTML);
-    display.innerHTML = '';
-    operation = 'subtract';
+    if (!operationOn){
+        operation = 'subtract';
+        num1 = parseFloat(display.innerHTML);
+        display.innerHTML = '';
+        cleared = true;
+        operationOn = true;
+    } else {
+        num2 = parseFloat(display.innerHTML);
+        operate();
+        operation = 'subtract';
+    } 
 }
+
 addButton.onclick = function(){
-    num1 = parseFloat(display.innerHTML);
-    display.innerHTML = '';
-    operation = 'add';
-}
+    if (!operationOn){
+        operation = 'add';
+        num1 = parseFloat(display.innerHTML);
+        display.innerHTML = '';
+        cleared = true;
+        operationOn = true;
+    } else {
+        num2 = parseFloat(display.innerHTML);
+        operate();
+        operation = 'add';
+    } 
+}   
 
 
-
+/* Clear all settings */
 clearButton.onclick = function(){
     display.innerHTML = '';
+    clearAll();
+}
+
+function clearAll(){
     decimalSelected = false;
     percentSelected = false;
+    divideSelected = false;
+    multiplySelected = false;
+    subtractSelected = false;
+    addSelected = false;
+    num1 = 0;
+    num2 = 0;
+    cleared = true;
 }
 
 equalsButton.onclick = function(){
@@ -134,18 +219,31 @@ equalsButton.onclick = function(){
 /* Basic Button Operation Functions */
 function add(){
     display.innerHTML = num1 + num2;
+    cleared = true;
+    num1 = parseFloat(display.innerHTML);
 };
 
 function subtract(){
     display.innerHTML =  num1 - num2;
+    cleared = true;
+    num1 = parseFloat(display.innerHTML);
 };
 
 function multiply(){
     display.innerHTML =  num1 * num2;
+    cleared = true;
+    num1 = parseFloat(display.innerHTML);
 };
 
 function divide(){
-    display.innerHTML =  num1 / num2;
+    if (num2 === 0){
+        display.innerHTML =  'ERROR!';
+        clearAll();
+    } else {
+       display.innerHTML =  num1 / num2; 
+       cleared = true;
+       num1 = parseFloat(display.innerHTML);
+    }
 };
 
 function operate(){
